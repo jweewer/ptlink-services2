@@ -1,0 +1,160 @@
+actions.o: actions.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h
+akill.o: akill.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h
+botlist.o: botlist.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/ircdsetup.h
+channels.o: channels.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/ircdsetup.h ../include/hash.h ../include/stdinc.h \
+  ../include/services.h ../include/irc_string.h
+chanserv.o: chanserv.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/ircdsetup.h ../include/irc_string.h cs_save.c
+commands.o: commands.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/commands.h ../include/language.h
+config.o: config.c ../include/setup.h ../include/services.h \
+  ../include/sysconf.h ../include/setup.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h ../include/path.h ../include/ircdsetup.h \
+  ../include/options.h
+datafiles.o: datafiles.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/datafiles.h
+dbinit.o: dbinit.c ../include/sysconf.h ../include/setup.h \
+  ../include/services.h ../include/sysconf.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h ../include/stdinc.h ../include/path.h \
+  ../include/extern.h
+encrypt.o: encrypt.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/encrypt.h
+hash.o: hash.c ../include/stdinc.h ../include/setup.h \
+  ../include/irc_string.h ../include/hash.h ../include/stdinc.h \
+  ../include/services.h ../include/sysconf.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h ../include/irc_string.h
+init.o: init.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/ircdsetup.h ../include/language.h ../include/path.h \
+  ../include/patchlevel.h
+language.o: language.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/language.h ../include/path.h
+list.o: list.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h
+log.o: log.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/options.h
+main.o: main.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/timeout.h ../include/language.h ../include/patchlevel.h \
+  ../include/path.h
+match.o: match.c ../include/irc_string.h
+memory.o: memory.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h
+memoserv.o: memoserv.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/hash.h ../include/stdinc.h ../include/services.h \
+  ../include/irc_string.h
+messages.o: messages.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/messages.h ../include/language.h ../include/ircdsetup.h \
+  ../include/options.h ../include/patchlevel.h
+misc.o: misc.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/options.h ../include/language.h ../include/irc_string.h
+mysql.o: mysql.c ../include/sysconf.h ../include/setup.h \
+  ../include/services.h ../include/sysconf.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h
+news.o: news.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h
+newsserv.o: newsserv.c ../include/ircdsetup.h ../include/sysconf.h \
+  ../include/setup.h ../include/services.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h ../include/pseudo.h ../include/commands.h \
+  ../include/language.h ../include/timeout.h ../include/encrypt.h \
+  ../include/datafiles.h ../include/newsserv.h ../include/services.h
+nickserv.o: nickserv.c ../include/stdinc.h ../include/setup.h \
+  ../include/services.h ../include/sysconf.h ../include/config.h \
+  ../include/stats.h ../include/ircdsetup.h ../include/defs.h \
+  ../include/extern.h ../include/pseudo.h ../include/commands.h \
+  ../include/language.h ../include/timeout.h ../include/encrypt.h \
+  ../include/datafiles.h ../include/ircdsetup.h ../include/newsserv.h \
+  ../include/services.h ../include/hash.h ../include/stdinc.h \
+  ../include/irc_string.h ns_save.c ../include/my_sql.h
+operserv.o: operserv.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/ircdsetup.h
+process.o: process.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/messages.h
+send.o: send.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/ircdsetup.h
+sessions.o: sessions.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/hash.h ../include/stdinc.h ../include/services.h \
+  ../include/irc_string.h
+sockutil.o: sockutil.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h
+sqvline.o: sqvline.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/ircdsetup.h
+stats.o: stats.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h
+timeout.o: timeout.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/timeout.h
+users.o: users.c ../include/services.h ../include/sysconf.h \
+  ../include/setup.h ../include/config.h ../include/stats.h \
+  ../include/ircdsetup.h ../include/defs.h ../include/extern.h \
+  ../include/pseudo.h ../include/commands.h ../include/language.h \
+  ../include/timeout.h ../include/encrypt.h ../include/datafiles.h \
+  ../include/ircdsetup.h ../include/hash.h ../include/stdinc.h \
+  ../include/services.h ../include/irc_string.h

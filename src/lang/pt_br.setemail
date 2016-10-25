@@ -1,0 +1,27 @@
+Olá %s,
+
+Você está recebendo esta mensagem como parte de um sistema automatizado
+de validação de email na rede do IRC de PTlink. Se você não pediu este 
+serviço, você pode simplesmente ignorar esta mensagem.
+
+************ MODIFICAÇÃO DE E-MAIL AINDA NÃO ESTÁ COMPLETA **************
+
+Aqui estão as intruções com os últimos passos para concluir a alteração
+do seu email. Se este email for ignorado, este nick não poderá completar
+com sucesso a alteração do email que está ligado ao seu nick.
+
+LEMBRE-SE: Ao utilizar a rede de IRC PTlink, estás obrigado a respeitar
+a política de utilização aceitável descrita em:
+http://www.ptlink.net/aup/
+
+COMPLETA A ALTERAÇÃO DO SEU EMAIL:
+
+A próxima vez que você utilizar o nick, depois de você se identificar
+com /NickServ IDENTIFY %s
+utilize o comando:
+
+/NickServ AUTH %s
+
+Modificação de email efetuada por: %s
+
+The PTlink IRC Network - http://www.ptlink.net	/server irc.ptlink.net:6667

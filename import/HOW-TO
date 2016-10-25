@@ -1,0 +1,34 @@
+HOW-TO
+import databases from other services
+
+*****
+NOTE: Only nick/pass/email and chan/founder/pass/access info will be imported.
+*****
+
+1) Check if there is an .stbd output .diff for your services on 
+    the /import directory. If you don't find a patch for them
+    please email to Coders@PTlink.net requesting for it with the
+    URL for those services source, if we have the time, the patch
+    will be on next PTlink Services version.
+
+2) Untar your prior services source code and apply the patch with:
+	patch -p1 < servicesversion.diff
+	(You must be on your services source root dir.)
+
+3) Install the patched version and run ./listchans -c, 
+    during channel list count the files nick.stdb and chan.stdb 
+    will be created on your data directory, those files 
+    will be used with import-stdb.
+
+4) "make import-stdb" from PTlink.Services source root dir.
+
+5) copy src/import-stdb binary, nick.stdb and chan.stdb files and 
+    PTlink Services services.conf to the same directory,
+    run ./import-stdb.
+    You will now have the new *.db ready to use with PTlink Services
+    
+-------------------------------------------------------------------------
+Lamego@PTlink.net
+If you have more questions please check our forum at 
+http://www.ptlink.net/Coders/ or email to Coders@PTlink.net
+-------------------------------------------------------------------------

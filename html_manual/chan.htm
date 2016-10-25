@@ -1,0 +1,334 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF">
+<p align="center">&nbsp;</p>
+<p align="center"><b><font face="Verdana" size="2" color="#FFFFFF">- Chanserv 
+  commands -</font></b></p>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" align="center" cellspacing="0" bordercolorlight="#CCCCCC" bordercolordark="#CCCCCC" bordercolor="#CCCCCC">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><b><font size="1" face="Verdana">About chanserv:</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td><font size="1" face="Verdana">The chanserv is the service that controls 
+        channels and they're use. It allows the user to create it's own channel, 
+        and even get info on the other channels on the network. It also allows 
+        the user to restrict the access to the same channel and to set the operator 
+        status to other users.</font></td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><b><font face="Verdana" size="1">Register:</font></b></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">The <b>register</b> command, allows the 
+          user to register it's channel, so that he is considered the &quot;founder&quot; 
+          of that same channel. This command, used with the command <b>identify</b> 
+          (later on this page) allows the change of the channels configuration</font></p>
+        <p><font face="Verdana" size="1">When a user registers a given channel, 
+          he is considered the founder of that same channel. This means that only 
+          he can change the configurations of the channel. When the founder enters 
+          the channel, he is given operator status automatically. Operator status 
+          can be given to other users using the command <b>access</b> (see the 
+          command ahead). In order to register a channel, the user must also use 
+          a registered nick name (see the command <b>register</b> in the nickserv 
+          help)</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax: </b>/chanserv register channel 
+          password description</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /chanserv register #manual 
+          manualpass test - This command would register the channel #manual, using 
+          the password &quot;manualpass&quot; and &quot;test&quot; as the description.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Identify:</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">The identify command allows the user 
+          to identify himself as the founder of a channel, granting him access 
+          to all it's configuration issues.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /chanserv identify channel 
+          password</font></p>
+        <p><font size="1" face="Verdana"><b>Example:</b> /chanserv identify #manual 
+          manualpass - this command would identify the user as the founder of 
+          the #manual channel, with &quot;manualpass&quot; as the password.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Set:</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command allows the user to configure 
+          several parameters of his channel. Consequently, he is able to use these 
+          commands:</font></p>
+        <ul>
+          <li><font size="1" face="Verdana">/chanserv set founder - sets the channels 
+            founder</font></li>
+          <li><font size="1" face="Verdana">/chanserv set successor - sets the 
+            channels successor</font></li>
+          <li><font size="1" face="Verdana">/chanserv set password - sets the 
+            channels password</font></li>
+          <li><font size="1" face="Verdana">/chanserv set disc - sets the channels 
+            description</font></li>
+          <li><font size="1" face="Verdana">/chanserv set url - sets the channels 
+            linked url</font></li>
+          <li><font size="1" face="Verdana">/chanserv set e-mail - sets the channels 
+            linked e-mail</font></li>
+          <li><font size="1" face="Verdana">/chanserv set entrymsg - sets the 
+            message that the chanserv will send the user when he enters the channel</font></li>
+          <li><font size="1" face="Verdana">/chanserv set topic - sets the channel's 
+            topic</font></li>
+          <li><font size="1" face="Verdana">/chanserv set keeptopic - keeps the 
+            topic when the channel is not in use</font></li>
+          <li><font size="1" face="Verdana">/chanserv set topiclock - locks the 
+            channel's topic</font></li>
+          <li><font size="1" face="Verdana">/chanserv set mlock - locks or unlocks 
+            the modes of the channel</font></li>
+          <li><font size="1" face="Verdana">/chanserv set private - makes the 
+            channel invisible to the list of channels (with the /list command)</font></li>
+          <li><font size="1" face="Verdana">/chanserv set restricted - restricts 
+            the access to the channel</font></li>
+          <li><font size="1" face="Verdana">/chanserv set secureops - modifies 
+            ops control on the channel</font></li>
+          <li><font size="1" face="Verdana">/chanserv set leaveops - makes ops 
+            stay unless command /chanserv deop is used</font></li>
+          <li><font size="1" face="Verdana">/chanserv set opnotice - allows a 
+            notice to be sent when the op or deop commands are used</font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Access</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">Allows the user to read or write the 
+          channels access list. This means that he can change the auto-op list 
+          of people on that same channel. There can established several levels 
+          for the users access on the channel, which give access to more or less 
+          commands to those users.</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /chanserv access #canal 
+          {add | del | list} nick level</font></p>
+        <p><font face="Verdana" size="1"><b>Examples:</b> </font></p>
+        <ul>
+          <li><font face="Verdana" size="1">/chanserv access #manual add kript0n 
+            15 - adds the user kript0n to the channel's access list with level 
+            15</font></li>
+          <li><font face="Verdana" size="1">/chanserv access #manual del kript0n 
+            - deletes the user kript0n from the access list of the channel</font></li>
+          <li><font face="Verdana" size="1">/chanserv access #manual list - lists 
+            the channel's access list</font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Akick</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">This command is used to maintain a auto-kick 
+          list for that channel. A user on this list is automatically kick when 
+          he joins the channel.</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax: </b>/chanserv akick canal 
+          {add | del | list} mask reason</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /chanserv akick #manual 
+          add kript0n@* - adds kript0n to the auto-kick list on channel #manual 
+          </font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Drop</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command makes the given channel 
+          be deleted from Chanserv, also deleting every data on that same channel. 
+          This allows another user to register that same channel.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax: </b>/chanserv drop #channel</font></p>
+        <p><font size="1" face="Verdana"><b>Example: </b>/chanserv drop #manual 
+          - deletes the channel #manual from Chanserv</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Info</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">Displays informations about the specified 
+          channel, such as the founder, the registry time, last use time, etc.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /chanserv info channel</font></p>
+        <p><font size="1" face="Verdana"><b>Example:</b> /chanserv info #manual 
+          - displays information about the channel #manual</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Invite</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">Makes the chanserv invite the user into 
+          the specified channel. This command only works if the user has a level 
+          on that channel bigger than 0 in the channel's access list</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /chanserv invite channel</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /chanserv invite #manual 
+          - invites the user to join #manual</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Op</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">Makes chanserv op the specified user 
+          in the specified channel</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /chanserv op channel nick</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /chanserv op #manual 
+          kript0n - makes chanserv give op to kript0n at channel #manual</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Drop</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">Makes the chanserv deop the specified 
+          user in the specified channel</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /chanserv deop channel 
+          nick</font></p>
+        <p><font face="Verdana" size="1"><b>Example: </b>/chanserv deop #manual 
+          kript0n - makes chanserv deop kript0n at channel #manual</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Kick</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">Makes chanserv kick a user from a channel</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /chanserv kick channel 
+          nick reason</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /chanserv kick #manual 
+          kript0n get off this channel - makes chanserv kick kript0n from #manual 
+          with the message &quot;get off this channel&quot;</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0" height="94">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Clear</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td height="99"> 
+        <p><font face="Verdana" size="1">Makes chanserv delete a given section 
+          of the configurations of the given channel. The following commands can 
+          be used:</font></p>
+        <ul>
+          <li><font face="Verdana" size="1">/chanserv clear modes - clears all 
+            channel's modes</font></li>
+          <li><font face="Verdana" size="1">/chanserv clear bans - clears the 
+            channel's ban list</font></li>
+          <li><font face="Verdana" size="1">/chanserv clear ops - clears the ops 
+            on the channel</font></li>
+          <li><font face="Verdana" size="1">/chanserv clear voices - clears the 
+            voice users on the channel</font></li>
+          <li><font face="Verdana" size="1">/chanserv clear users - kicks all 
+            users from a channel</font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+</body>
+</html>

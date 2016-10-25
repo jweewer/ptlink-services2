@@ -1,0 +1,39 @@
+******************************************************************
+*                  http://software.pt-link.net                   *
+******************************************************************
+ * $Id: CHANGES,v 1.69 2005/04/05 19:15:12 stinger Exp $
+
+EOL stands for End Of Life
+This means this is will be the last release for this major version,
+We will be continuing applying critical fixes as long we get enough
+details about them. This version will not be supported after 2005 .
+
+(.1) 
+
+  What has been fixed ?
+  ---------------------
+  the last_topic db field now supports more than 255 chars
+  
+  PTlink.Services2.26-eol (14 Mar 2005)
+==================================================================
+  What's new ?
+  ---------------------
+  0000172: send 328 (CHAN_URL) numeric
+  0000146: OnAuthJoin configuration option 
+  0000185: NSDisableNOMAIL option to disable the NOMAIL on nick register
+  
+  What has been fixed ?
+  ---------------------  
+  0000195: Ignore duplicated nicks on db (I don't where did they come from)
+  0000194: Timeouts are not removed when a nick expires
+  0000193: Successor is not removed from chans when the nick expires
+  0000187: On some functions nick/chan comparing functions irccmp( is not beeing used
+  0000180: nicks SUIDs are boken, to be replaced by SNIDs
+  0000179: chanserv needs to record the channel scid
+  0000178: If services is built with #ifdef JUSTMSG, CTCP ping replies are broken
+  0000175: Compile errors under FreeBSD 5.x
+  0000158: updated nick/chans tables and sql_str() from svs3
+  0000157: log2() change to log2c
+  0000150: Forbidden nicks can't be add on operserv oper/admin list anymore
+  0000184: akicks will not be cleared after a restart if they contain a host
+  

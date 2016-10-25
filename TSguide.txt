@@ -1,0 +1,15 @@
+* NickServ functions.
+*
+* PTlink Services is (C) CopyRight PTlink Coders Team 1999-2000
+* http://www.ptlink.net/Coders/ - coders@PTlink.net
+* This program is distributed under GNU Public License
+* Please read the file COPYING for copyright information.
+
+ TS usage guide 
+----------------
+user 
+  first_TS  -> from nick introduction
+  local_TS -> local last nick TS (change) (for online time calculation)
+nick->last
+  last_signon -> from nick identify/register (local)
+  first_TS -> from nick introduction (to be matched with user first_TS for validation)

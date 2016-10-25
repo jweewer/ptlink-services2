@@ -1,0 +1,27 @@
+Hallo %s,
+
+Du erhältst die E-Mail weil diese ein Teil der automatischen email
+Überprüfung von PTlink IRC network ist. Wenn du den Wunsch hast, dieses
+Services nicht fortsetzen zu wollen, dann ignoriere diese Nachricht.
+
+********* E-Mail Änderung ist jetzt nicht vollständig *******************
+
+Diese E-Mail beinhaltet Anweisungen, die dazu dienen, eine vollständige
+E-Mail Änderung zu übernehmen. Wenn du diese E-Mail ignorierst, dann
+wird der Wunsch auf eine E-Mail Änderung nicht übernommen.
+
+Achtung:
+Mit der Benutzung von PTlink IRC Network musst du auch die
+Nutzungsbedingungen akzeptieren. 
+Bitte lies dir diese Nutzungsbedingungen gut durch,
+bevor du weiter machst: http://www.ptlink.net/aup/
+
+Vervollständige deine E-Mail Änderung:
+
+Wenn du das nächste Mal wieder online bist, dann tippe:
+
+/NickServ AUTH %s
+
+E-Mail Änderung von: %s
+
+The PTlink IRC Network - http://www.ptlink.net	/server irc.ptlink.net:6667

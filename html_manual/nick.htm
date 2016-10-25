@@ -1,0 +1,283 @@
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#000000" text="#FFFFFF">
+<p align="center">&nbsp;</p>
+<p align="center"><font face="Verdana, Arial, Helvetica, sans-serif"><b><font size="2">- 
+  Nickserv commands -</font></b></font></p>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>About Nickserv</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">The nickserv service allows a user to 
+          register a nick so that that same nick cannot be used by others. Consequently, 
+          this service's commands are to maintain and setup nicks.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Ajoin</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command allows the management of 
+          the channel list that the user automatically enters when he identifies 
+          his nick.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /nickserv ajoin {add | 
+          del | list} #canal </font></p>
+        <p><font size="1" face="Verdana"><b>Examples:</b></font></p>
+        <ul>
+          <li><font size="1" face="Verdana"> /nickserv ajoin add #test - adds 
+            #test to the user's ajoin list. </font></li>
+          <li><font size="1" face="Verdana">/nickserv ajoin del #test - dels #test 
+            to the user's ajoin list.</font></li>
+          <li><font size="1" face="Verdana">/nickserv ajoin list - displays the 
+            user's auto-join list.</font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Register</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command allows the user to register 
+          his nick so that it cannot be used by more persons, unless they know 
+          the nick's registry password.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /nickserv register password 
+          e-mail</font></p>
+        <p><font size="1" face="Verdana"><b>Example:</b> /nickserv register mypass 
+          my-email@domain.com - registers the current nick with the password &quot;mypass&quot; 
+          and the e-mail &quot;my-email@domain.com&quot;. If the user does not 
+          have an e-mail account set, he can put &quot;nomail&quot; as the e-mail</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Link</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command makes two nicks that belong 
+          to the same person be linked, so that all memos and other lists are 
+          shared.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /nickserv link nick password</font></p>
+        <p><font size="1" face="Verdana"><b>Example:</b> /nickserv link my_nick 
+          mypass - this command makes the nick &quot;my_nick&quot; with the password 
+          &quot;mypass&quot; linked to the current one. </font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Set</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command allows the user to change 
+          several options about the nick he owns. The following commands can be 
+          used:</font></p>
+        <ul>
+          <li><font size="1" face="Verdana">/nickserv set password - changes the 
+            nick's password</font></li>
+          <li><font size="1" face="Verdana">/nickserv set language - sets the 
+            language used by the services while issuing the user</font></li>
+          <li><font size="1" face="Verdana">/nickserv set url - sets the nick's 
+            linked url</font></li>
+          <li><font size="1" face="Verdana">/nickserv set e-mail - sets the nick's 
+            linked e-mail</font></li>
+          <li><font size="1" face="Verdana">/nickserv set kill - turns on or off 
+            the kill protections</font></li>
+          <li><font size="1" face="Verdana">/nickserv set private - makes the 
+            user appear or not on the /nickserv list</font></li>
+          <li><font size="1" face="Verdana">/nickserv set hide - changes the information 
+            hidden to the others about the nick</font></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Drop</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command drops a nick from nickserv, 
+          deleting all info on the nick, including all lists. This makes the nick 
+          available for registration by another user.</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /nickserv drop</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Recover</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">This command is to be used when a user's 
+          nick is used by another person without the owner's authorization. This 
+          makes nickserv use a &quot;fake&quot; user to join the irc, using the 
+          stolen nick, in order to kill the person who stole that same nick. This 
+          &quot;fake&quot; user stays on for about one minute in order to prevent 
+          that person from reconnecting using that same nick. The command <b>release</b> 
+          can be used by the real owner to make this &quot;fake&quot; user quit 
+          faster. </font></p>
+        <p><font face="Verdana" size="1"><b>Syntax</b>: /nickserv recover nick 
+          password</font></p>
+        <p><font face="Verdana" size="1"><b>Example: </b>/nickserv recover mynick 
+          mypass - this command recovers the nick &quot;mynick&quot;, with password 
+          &quot;mypass&quot;, using the method explained above.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Release</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">This command makes the &quot;fake&quot; 
+          user described above quit the irc faster in order to give the nick's 
+          owner the control over the nick, in a recovery situation</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax: </b>/nickserv release nick 
+          password</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font size="1" face="Verdana"><b>Listlinks</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font size="1" face="Verdana">This command lists the list of the nicks 
+          linked to the current one. (see <b>link</b> command)</font></p>
+        <p><font size="1" face="Verdana"><b>Syntax:</b> /nickserv listlinks</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Unlink</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">This command makes a link between two 
+          nicks disappear, making each link regain its lists and memos.</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax: </b>/nickserv unlink nick 
+          pass</font></p>
+        <p><font face="Verdana" size="1"><b>Example:</b> /nickserv unlink nick2 
+          mypass2 - this command unlinks &quot;nick2&quot; with the pass &quot;mypass2&quot; 
+          with the current nick.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Ghost</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">The ghost command is to be used when 
+          a user loses his connection to the server by any reason (like the crash 
+          of the computer, or the loss of the connection to the isp) in order 
+          to kill the &quot;ghost&quot; nick left behind by the sudden loss of 
+          connection. </font></p>
+        <p><font face="Verdana" size="1"><b>Syntax:</b> /nickserv ghost nick pass</font></p>
+        <p><font face="Verdana" size="1"><b>Example: </b>lets suppose that the 
+          users connection dropped while using the nick &quot;mynick&quot;. When 
+          the connection is lost, the nick keeps on at the irc server. When the 
+          user reconnects, he verifies that his nick is in use (the &quot;ghost&quot; 
+          nick) and is forced to use the alternative one. Then, he can issue the 
+          command:</font></p>
+        <p><font face="Verdana" size="1">/nickserv ghost mynick mypass</font></p>
+        <p><font face="Verdana" size="1">Then, the &quot;ghost&quot; nick is killed 
+          and the user's nick is automatically changed to the real one.</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+<p align="center">&nbsp;</p>
+<div align="center">
+  <table width="75%" border="1" cellspacing="0">
+    <tr bgcolor="#666666"> 
+      <td> 
+        <div align="center"><font face="Verdana" size="1"><b>Info</b></font></div>
+      </td>
+    </tr>
+    <tr> 
+      <td> 
+        <p><font face="Verdana" size="1">The info command gives the user information 
+          about another nick. These information include: the last login date, 
+          the last quit message, the nick registry date, etc.</font></p>
+        <p><font face="Verdana" size="1"><b>Syntax: </b>/nickserv info nick</font></p>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

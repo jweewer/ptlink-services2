@@ -1,0 +1,49 @@
+#!/bin/sh
+#
+# PTlink Services Crontab 
+#
+# This is a script suitable for use in a crontab.  It checks to make sure
+# your services are running.  
+# If your services isn't found, it'll try to start it back up.
+#
+# You'll need to edit this script for your services.
+#
+# To check for your services every 10 minutes, put the following line in your
+# crontab:
+#    0,10,20,30,40,50 * * * *   /home/mydir/services/serviceschk
+# And if you don't want to get email from crontab when it checks you services,
+# put the following in your crontab:
+#    0,10,20,30,40,50 * * * *   /home/mydir/services/serviceschk >/dev/null 2>&1
+#
+
+# change this to your services binary directory:
+bdir="$HOME/services/bin"
+
+#change this to your data directory
+ddir="$HOME/services/etc"
+
+# change this to the name of your services's file in that directory:
+servicesexe="services"
+
+# I wouldn't touch this if I were you.
+servicesname="$ddir/services.pid"
+
+########## you probably don't need to change anything below here ##########
+
+if test -r $servicesname; then
+  # there is a pid file -- is it current?
+  servicespid=`cat $servicesname`
+  if `kill -CHLD $servicespid >/dev/null 2>&1`; then
+    # it's still going
+    # back out quietly
+    exit 0
+  fi
+  echo ""
+  echo "Stale $servicesname file (erasing it)"
+  rm -f $servicesname
+fi
+echo ""
+echo "Couldn't find the services running.  Reloading it..."
+echo ""
+cd $bdir
+./$servicesexe

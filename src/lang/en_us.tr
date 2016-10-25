@@ -1,0 +1,34 @@
+Hello %s,
+
+You are receiving this message as part of an automated nickname
+registration system on the PTlink IRC network. If you did not request
+this service, you may simply ignore this message.
+
+************ YOUR REGISTRATION IS NOT YET COMPLETE **********************
+
+There are instructions in this e-mail for the final steps to finish your
+registration. If you ignore this e-mail, you will not be able 
+to send memos or register new channels.
+
+By using the PTlink IRC Network you agree to be bound by its Acceptable
+Use Policy. Please read this policy: http://www.ptlink.net/aup/
+
+Please take a moment right now to write down your nick password.
+The password you chose is: %s
+
+COMPLETE YOUR REGISTRATION:
+
+The next time you are online after identifying your nick with
+  /NickServ IDENTIFY %s
+
+use the following command:
+  /NickServ AUTH %s
+
+If you want to hide your nick from your nick info please
+use the following command:
+
+  /NickServ SET HIDE EMAIL ON
+
+Registration By: %s
+
+The PTlink IRC Network - http://www.ptlink.net	/server irc.ptlink.net:6667

@@ -1,0 +1,32 @@
+Ola' %s,
+
+Estas a receber este email a partir dum servico automatico de
+verificacao de registos da rede de IRC PTlink. Se nao efectuaste este
+registo ignora esta mensagem.
+
+************ O REGISTO AINDA NAO ESTA COMPLETO  **********************
+
+Aqui estao as intrucoes com os ultimos passos para concluir o registo do
+nick. Se este email for ignorado, este nick nao podera enviar memos
+ou registar novos canais.
+
+Au utilizares a rede de IRC PTlink estas' obrigado a respeitar
+a politica de utilizacao aceitavel descrita em:
+http://www.ptlink.net/aup/
+
+COMPLETA O REGISTO DO NICK:
+
+A proxima vez que utilizes o nick, depois de te identificares
+com /NickServ IDENTIFY %s
+utiliza o comando:
+
+  /NickServ AUTH %s
+
+Se pretendes ocultar o teu email de quem faz um pedido de informacao
+sobre o teu nick com /NickServ INFO nick, utiliza o comado:
+
+  /NickServ SET HIDE EMAIL ON
+
+Registo efectuado por: %s
+
+A rede de IRC PTlink - http://www.ptlink.net	/server irc.ptlink.net:6667

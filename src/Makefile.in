@@ -1,0 +1,184 @@
+#
+# Makefile.in for services/src
+#
+#
+CC		= @CC@
+INSTALL		= @INSTALL@
+INSTALL_BIN	= @INSTALL_PROGRAM@
+INSTALL_DATA	= @INSTALL_DATA@
+INSTALL_SUID	= @INSTALL_PROGRAM@ -o root -m 4755
+RM		= @RM@
+CFLAGS		= @MAIN_CFLAGS@
+LDFLAGS   	= @LDFLAGS@
+MKDEP		= @MKDEP@ 
+MV		= @MV@
+RM		= @RM@
+LN		= @LN@
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+bindir		= @bindir@
+libexecdir	= @libexecdir@
+sysconfdir	= @sysconfdir@
+localstatedir	= @localstatedir@
+
+DOLLAR = $$
+
+SERVICES_EXE	= services
+
+PROGS		= $(SERVICES_EXE)
+
+SERVICESLIBS	= @LIBS@
+INCLUDES	= -I../include
+CPPFLAGS	= ${INCLUDES} @CPPFLAGS@
+ 
+default:	all
+
+BASE_SRCS =                     \
+		actions.c \
+		akill.c \
+		botlist.c \
+		channels.c \
+		chanserv.c \
+		commands.c \
+		config.c \
+		datafiles.c \
+		dbinit.c \
+		encrypt.c \
+		hash.c \
+		init.c \
+		language.c \
+		list.c \
+		log.c \
+		main.c \
+		match.c \
+		memory.c \
+		memoserv.c \
+		messages.c \
+		misc.c \
+		mysql.c \
+		news.c \
+		newsserv.c \
+		nickserv.c \
+		operserv.c \
+		process.c \
+		send.c \
+		sessions.c \
+		sockutil.c \
+		sqvline.c \
+		stats.c \
+		timeout.c \
+		users.c 
+
+SRCS = ${BASE_SRCS}
+
+OBJS = ${SRCS:.c=.o}
+
+
+IMPORT_STDB_SRCS = import-stdb.o config-x.o datafiles-x.o misc-x.o
+IMPORT_STDB_OBJS = ${IMPORT_STDB_SRCS:.c=.o}
+
+import-stdb: $(IMPORT_STDB_OBJS)
+	${CC} ${LDFLAGS} $(IMPORT_STDB_OBJS) ${SERVICESLIBS} -o $@
+import-stdb.o: import-stdb.c
+misc-x.o: misc.c 
+	${CC} ${CPPFLAGS} -DNOT_MAIN -c misc.c -o $@
+config-x.o: config.c
+	${CC} ${CPPFLAGS} -DNOT_MAIN -c config.c -o $@
+datafiles-x.o: datafiles.c cs_save.c ns_save.c
+	${CC} ${CPPFLAGS} -DNOT_MAIN -c datafiles.c -o $@
+
+all: services
+
+build: all
+
+services: lang $(OBJS) version.o
+	${CC} ${CPPFLAGS} ${LDFLAGS} -o $@ ${OBJS} version.o ${SERVICESLIBS}
+	mv version.c version.c.last
+
+install-mkdirs:
+	-@if test ! -d $(prefix); then \
+		echo "mkdir $(prefix)"; \
+		mkdir $(prefix); \
+	fi
+	-@if test ! -d $(exec_prefix); then \
+		echo "mkdir $(exec_prefix)"; \
+		mkdir $(exec_prefix); \
+	fi
+	-@if test ! -d $(prefix)/data; then \
+		echo "mkdir $(prefix)/data"; \
+		mkdir $(prefix)/data; \
+	fi
+	-@if test ! -d $(prefix)/data/logs; then \
+		echo "mkdir $(prefix)/data"; \
+		mkdir $(prefix)/data/logs; \
+	fi
+	-@if test ! -d $(bindir); then \
+		echo "mkdir $(bindir)"; \
+		mkdir $(bindir); \
+	fi
+	-@if test ! -d $(sysconfdir); then \
+		echo "mkdir $(sysconfdir)"; \
+		mkdir $(sysconfdir); \
+	fi
+install: install-mkdirs build
+	@for i in $(PROGS); do \
+		if test -f $(bindir)/$$i; then \
+			echo $(MV) $(bindir)/$$i $(bindir)/$$i.old; \
+			$(MV) $(bindir)/$$i $(bindir)/$$i.old; \
+		fi; \
+		echo $(INSTALL_BIN) $$i $(bindir); \
+		$(INSTALL_BIN) $$i $(bindir); \
+	done
+	@cd lang ; ${MAKE} install
+	@if ! test -f  $(bindir)/listnicks; then \
+		cd $(bindir) ; \
+		$(LN) -s services listnicks; \
+		fi
+	@if ! test -f  $(bindir)/listchans; then \
+		cd $(bindir) ; \
+		$(LN) -s services listchans; \
+		fi
+	@if ! test -f  $(sysconfdir)/services.conf; then \
+		 $(INSTALL_DATA) ../data/example.conf $(sysconfdir)/services.conf; \
+		fi
+	$(INSTALL_DATA) ../data/example.conf $(sysconfdir)
+	$(INSTALL_DATA) ../data/domain.def $(sysconfdir)
+	$(INSTALL_DATA) ../data/create_tables.sql $(sysconfdir)
+	@if test -f $(sysconfdir)/services.pid ; then \
+	  servicespid=`cat $(sysconfdir)/services.pid`; \
+	  if `kill -CHLD $$servicespid >/dev/null 2>&1`; then \
+	    echo "- killing running services"; \
+	    kill $$servicespid > /dev/null 2>&1; \
+	    echo "- waiting 5 seconds for data save"; \
+	    sleep 5; \
+	    $(bindir)/services; \
+	  fi; \
+	fi
+
+version.c: version.c.SH
+	/bin/sh ./version.c.SH
+
+../include/language.h: lang/language.h
+	cp -p lang/language.h ../include
+
+lang/language.h: lang/Makefile lang/index
+	(cd lang ; $(MAKE) language.h)
+
+# this is really the default rule for c files
+.c.o:
+	${CC} ${CPPFLAGS} ${CFLAGS} -c $<
+
+.PHONY: depend clean distclean
+depend:
+	${MKDEP} ${CPPFLAGS} ${BASE_SRCS} ${EXTRA_SRCS} > .depend
+
+clean:
+	${RM} -f *.o *.exe *~ services.core core services import-stdb
+
+lint:
+	lint -aacgprxhH $(CPPFLAGS) $(SRCS) >>../lint.out
+
+distclean: clean
+	${RM} -f Makefile version.c.last version.c
+
+include .depend

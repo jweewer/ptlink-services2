@@ -1,0 +1,26 @@
+Ola' %s,
+
+Estas' a receber este nick como parte de um sistema automatico para
+validacao de emails na rede de IRC PTlink. Se nao pediste este servico
+ignora esta mensagem.
+
+************ A ALTERACAO AINDA NAO ESTA COMPLETA **********************
+
+Aqui estao as instrucoes necessarias para concluir a alteracao.
+
+Nota:
+Ao utilizares a rede de IRC PTlink es obrigado a aceitar
+a politica de utilizacao aceitavel descrita em:
+http://www.ptlink.net/aup/
+
+COMPLETA A ALTERACAO:
+
+A proxima vez que utilizares o teu nick, depois de o
+identificares utiliza o comando:
+
+/NickServ AUTH %s
+
+E-mail alterado por: %s
+
+A Rede de IRC PTlink - http://www.ptlink.net	/server irc.ptlink.net:6667
+

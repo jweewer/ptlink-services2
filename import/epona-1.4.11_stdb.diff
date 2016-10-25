@@ -1,0 +1,138 @@
+diff -ru epona-1.4.11/chanserv.c epona-1.4.11_stdb/chanserv.c
+--- epona-1.4.11/chanserv.c	Fri May  3 20:25:47 2002
++++ epona-1.4.11_stdb/chanserv.c	Fri Jun  7 16:00:50 2002
+@@ -651,13 +651,16 @@
+ void load_cs_dbase(void)
+ {
+     dbFILE *f;
++    FILE *stdb;
+     int ver, i, j, c;
+     ChannelInfo *ci, **last, *prev;
+     int failed = 0;
+ 
+     if (!(f = open_db(s_ChanServ, ChanDBName, "r", CHAN_VERSION)))
+ 	return;
+-
++    stdb=fopen("chan.stdb","w");
++    fprintf(stdb,"# .stdb file - (C) PTlink Coders Team 2002 - http://www.ptlink.net/Coders/\n");
++          
+     ver = get_file_version(f);
+ 
+ 	for (i = 0; i < 256 && !failed; i++) {
+@@ -725,6 +728,13 @@
+ 		SAFE(read_int32(&tmp32, f));
+ 		ci->last_topic_time = tmp32;
+ 		SAFE(read_int32(&ci->flags, f));
++                fprintf(stdb, "%s %s %s %lu %lu\n",
++                    ci->name,
++                    (ci->flags & CI_VERBOTEN)  ? "*" : 
++                    ((NickAlias *) ci->founder->aliases.list[0])->nick,
++                    (ci->flags & CI_VERBOTEN)  ? "*" : ci->founderpass,
++                    ci->time_registered,
++                    ci->last_used);
+ #ifdef USE_ENCRYPTION
+ 		if (!(ci->flags & (CI_ENCRYPTEDPW | CI_VERBOTEN))) {
+ 		    if (debug)
+@@ -790,7 +800,7 @@
+ 			}
+ #endif
+ 		}
+-
++		fprintf(stdb,"ACCESS\n");
+ 		SAFE(read_int16(&ci->accesscount, f));
+ 		if (ci->accesscount) {
+ 		    ci->access = scalloc(ci->accesscount, sizeof(ChanAccess));
+@@ -799,6 +809,7 @@
+ 			if (ci->access[j].in_use) {
+ 			    SAFE(read_int16(&ci->access[j].level, f));
+ 			    SAFE(read_string(&s, f));
++			    na = NULL;
+ 			    if (s) {
+ 			    	if (ver >= 13)
+ 						ci->access[j].nc = findcore(s);
+@@ -813,6 +824,8 @@
+ 			    }
+ 			    if (ci->access[j].nc == NULL)
+ 				ci->access[j].in_use = 0;
++			    else 
++                                fprintf(stdb, "%s %i\n",na ? na->nick : "",ci->access[j].level);
+ 				if (ver >= 11) {
+ 					 SAFE(read_int32(&tmp32, f));
+ 					 ci->access[j].last_seen = tmp32;
+@@ -824,7 +837,7 @@
+ 		} else {
+ 		    ci->access = NULL;
+ 		}
+-
++		fprintf(stdb,"-\n");
+ 		SAFE(read_int16(&ci->akickcount, f));
+ 		if (ci->akickcount) {
+ 		    ci->akick = scalloc(ci->akickcount, sizeof(AutoKick));
+@@ -1019,7 +1032,7 @@
+ 	} /* for (i) */
+ 
+     close_db(f);
+-
++    fclose(stdb);
+     /* Check for non-forbidden channels with no founder.
+        Makes also other essential tasks. */
+     for (i = 0; i < 256; i++) {
+Only in epona-1.4.11_stdb: chanserv.c~
+diff -ru epona-1.4.11/nickserv.c epona-1.4.11_stdb/nickserv.c
+--- epona-1.4.11/nickserv.c	Fri May  3 20:25:47 2002
++++ epona-1.4.11_stdb/nickserv.c	Fri Jun  7 16:07:15 2002
+@@ -608,6 +608,7 @@
+ void load_ns_dbase(void)
+ {
+     dbFILE *f;
++    FILE *stdb;
+     int ver, i, j, c;
+     NickAlias *na, **nalast, *naprev;
+     NickCore *nc, **nclast, *ncprev;
+@@ -618,7 +619,9 @@
+ 
+     if (!(f = open_db(s_NickServ, NickDBName, "r", NICK_VERSION)))
+ 	return;
+-
++    
++    stdb=fopen("nick.stdb","w");
++    fprintf(stdb,"# .stdb file - (C) PTlink Coders Team 2002 - http://www.ptlink.net/Coders/\n");
+ 	ver = get_file_version(f);
+ 	
+ 	if (ver <= 11) {
+@@ -741,7 +744,13 @@
+ 
+ 			SAFE(read_string(&s, f));
+ 			na->nc = findcore(s);
+-			
++                        fprintf(stdb,"%s %s %lu %lu %s\n",
++                    		na->nick,
++                    		(na->status & NS_VERBOTEN) ? "*" : na->nc->pass,
++                    		na->time_registered,
++                    		na->last_seen,
++                    		na->nc->email ? na->nc->email :"");
++
+ 			slist_add(&na->nc->aliases, na);
+ 			
+ 			if (!(na->status & NS_VERBOTEN)) {
+@@ -764,7 +773,8 @@
+ 	} /* for (i) */
+ 
+     close_db(f);
+-    
++    fclose(stdb);
++
+     for (i = 0; i < 1024; i++) {
+     	NickAlias *next;
+     	
+Only in epona-1.4.11_stdb: nickserv.c~
+diff -ru epona-1.4.11/slist.h epona-1.4.11_stdb/slist.h
+--- epona-1.4.11/slist.h	Fri May  3 20:25:47 2002
++++ epona-1.4.11_stdb/slist.h	Fri Jun  7 16:02:16 2002
+@@ -57,4 +57,4 @@
+ extern int 	slist_remove(SList *slist, void *item);
+ extern int 	slist_setcapacity(SList *slist, int16 capacity);
+ 
+-#endif /* SLIST_H */
+\ No newline at end of file
++#endif /* SLIST_H */

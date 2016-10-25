@@ -1,0 +1,32 @@
+Hallo %s,
+
+U ontvangt dit bericht als onderdeel van het geautomatiseerde bijnaam
+registratie systeem van het PTlink IRC netwerk. Als u niet om deze service
+heeft gevraagt, kunt u dit bericht gewoon negeren.
+
+************ UW REGISTRATIE IS NOG NIET COMPLEET **********************
+
+In dit bericht staan de laatste stappen die u moet uitvoeren om de registratie
+te voltooien, als u dit bericht dan ook negeert zal u niet in staat zijn
+om memo's te versturen of kanalen te registreren.
+
+Door gebruik te maken van het PTlink IRC netwerk gaat u akkoord met de 
+bij behorende Acceptable Use Policy. Voor meer informatie over deze 
+policy: http://www,ptlink.net/aup/
+
+VOLTOOIEN VAN UW REGISTRATIE:
+
+De volgende keer dat u online komt na het identificeren van uw bijnaam
+  /NickServ IDENTIFY %s
+
+gebruik dan het volgende commando:
+  /NickServ AUTH %s
+
+Als u uw bijnaam informatie wilt verstoppen voor ander gebruikers
+gebruik dan het volgende commando:
+
+  /NickServ SET HIDE EMAIL ON
+
+Registratie door: %s
+
+Het PTlink IRC Netwerk - http://www.ptlink.net	/server irc.ptlink.net:6667

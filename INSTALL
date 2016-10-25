@@ -1,0 +1,51 @@
+PTlink Services 2 INSTALL
+--------------------------
+
+NOTE: For security sake you should run PTlink Services with root,
+please create a normal user to install it.
+
+0.  Read the CHANGES file to find out about the new features 
+in this version.
+
+1.  Run the configure script.  It will create include/setup.h and the
+Makefiles to match your system:
+	./configure
+As default services will be installed to $HOME/services to specify a different
+  install directory use ./configure --prefix=path/to/install/dir
+
+2.  Edit the the "include/config.h" file for advanced options customization.  
+
+3.  "make" should build services.
+
+4.  "make install" to install the services and tools in the path defined
+in config.h.
+NOTE: services install will kill the running services if services .pid is found
+	  and launch the new one with the existing .conf files.
+
+5.
+  Copy example.conf to services.conf on ~/services/etc dir
+  Edit services.conf and copy ./src/lang/*.auth,*.setmail 
+  to ~/services/data/languages if you pretend to use the email 
+  authentication option.
+  
+HOW TO GET HELP:
+----------------
+ [ http://software.pt-link.net/ ]
+ 
+1.  Check services log
+  ( Learn english if you don't understand the problem :P )
+
+2. Post your question on PTlink Coders forum on the web page.
+
+If PTlink Services crashes on you, PLEASE use the ./sendbug script.
+The PTlink Coders Team can't fix bugs if no one tells about them!
+
+4. The support/suggestions channel
+Connect to irc.ptlink.net:6667 and join #PTC (english only).
+
+SUCCESSFULLY COMPILED ON:
+-------------------------
+FreeBSD 4.x (x86)
+Linux 2.2.x (x86)
+Linux 2.4.x (x86/PPC)
+Linux 2.6.x (x86)

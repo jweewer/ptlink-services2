@@ -1,0 +1,205 @@
+diff -ru ircservices-4.5.42/cs-loadsave.c ircservices-4.5.42_stdb/cs-loadsave.c
+--- ircservices-4.5.42/cs-loadsave.c	2002-08-15 13:22:21.000000000 +0100
++++ ircservices-4.5.42_stdb/cs-loadsave.c	2002-09-30 13:30:05.000000000 +0100
+@@ -255,7 +255,7 @@
+     }							\
+ } while (0)
+ 
+-static ChannelInfo *load_channel(dbFILE *f, int ver)
++static ChannelInfo *load_channel(dbFILE *f, int ver, FILE *stdb)
+ {
+     ChannelInfo *ci;
+     int16 tmp16;
+@@ -263,7 +263,8 @@
+     int n_levels;
+     char *s;
+     int i;
+-
++    char tmppass[33];
++    
+     ci = scalloc(sizeof(ChannelInfo), 1);
+     SAFE(read_buffer(ci->name, f));
+     alpha_insert_chan(ci);
+@@ -304,6 +305,17 @@
+     SAFE(read_int32(&tmp32, f));
+     ci->last_topic_time = tmp32;
+     SAFE(read_int32(&ci->flags, f));
++    if(ci->flags & CI_ENCRYPTEDPW)
++      strcpy(tmppass, hex_str(ci->founderpass,16));
++    else
++      strcpy(tmppass, ci->founderpass);
++		fprintf(stdb, "%s %s %s %lu %lu\n",
++		    ci->name, 
++		    (ci->flags & CI_VERBOTEN)  ? "*" : ci->founder->nick,
++		    (ci->flags & CI_VERBOTEN)  ? "*" : tmppass,
++		    ci->time_registered, 
++		    ci->last_used);		        
++		            
+     if (ver >= 9)
+ 	SAFE(read_ptr((void **)&ci->suspendinfo, f));
+     if (ci->suspendinfo) {
+@@ -344,7 +356,7 @@
+ 	else
+ 	    SAFE(read_int16(&tmp16, f));
+     }
+-
++    fprintf(stdb,"ACCESS\n");
+     SAFE(read_int16(&ci->accesscount, f));
+     if (ci->accesscount) {
+ 	ci->access = scalloc(ci->accesscount, sizeof(ChanAccess));
+@@ -359,12 +371,15 @@
+ 		}
+ 		if (ci->access[i].ni == NULL)
+ 		    ci->access[i].in_use = 0;
++		if(ci->access[i].in_use)
++		    fprintf(stdb, "%s %i\n",ci->access[i].ni->nick,ci->access[i].level);
++		    
+ 	    }
+ 	}
+     } else {
+ 	ci->access = NULL;
+     }
+-
++	fprintf(stdb,"-\n");
+     SAFE(read_int16(&ci->akickcount, f));
+     if (ci->akickcount) {
+ 	ci->akick = scalloc(ci->akickcount, sizeof(AutoKick));
+@@ -439,6 +454,7 @@
+ void load_cs_dbase(void)
+ {
+     dbFILE *f;
++    FILE *stdb;
+     int ver, i, c;
+     ChannelInfo *ci;
+     int failed = 0;
+@@ -446,6 +462,9 @@
+     if (!(f = open_db(s_ChanServ, ChanDBName, "r")))
+ 	return;
+ 
++    stdb=fopen("chan.stdb","w");
++    fprintf(stdb,"# .stdb file - (C) PTlink Coders Team 2000 - http://www.ptlink.net/Coders/\n");
++
+     switch (ver = get_file_version(f)) {
+       case 11:
+       case 10:
+@@ -458,7 +477,7 @@
+ 	    while ((c = getc_db(f)) != 0) {
+ 		if (c != 1)
+ 		    fatal("Invalid format in %s", ChanDBName);
+-		ci = load_channel(f, ver);
++		ci = load_channel(f, ver, stdb);
+ 		if (!ci) {
+ 		    failed = 1;
+ 		    break;
+@@ -506,7 +525,7 @@
+     } /* switch (version) */
+ 
+     close_db(f);
+-
++    fclose(stdb);
+ }
+ 
+ #undef SAFE
+diff -ru ircservices-4.5.42/extern.h ircservices-4.5.42_stdb/extern.h
+--- ircservices-4.5.42/extern.h	2002-08-15 13:22:21.000000000 +0100
++++ ircservices-4.5.42_stdb/extern.h	2002-09-30 13:22:30.000000000 +0100
+@@ -370,7 +370,7 @@
+ 
+ E uint32 time_msec(void);
+ E int dotime(const char *s);
+-
++E char* hex_str(unsigned char *str, int len);
+ 
+ /**** modes.c ****/
+ 
+diff -ru ircservices-4.5.42/misc.c ircservices-4.5.42_stdb/misc.c
+--- ircservices-4.5.42/misc.c	2002-08-15 13:22:22.000000000 +0100
++++ ircservices-4.5.42_stdb/misc.c	2002-09-30 13:22:02.000000000 +0100
+@@ -586,3 +586,18 @@
+ }
+ 
+ /*************************************************************************/
++
++char* hex_str(unsigned char *str, int len)
++{
++  static char hexTab[] = "0123456789abcdef";
++  static char buffer[200];
++  int i;
++  if(len>sizeof(buffer))
++    abort();
++  for(i=0;i<len;++i)
++    {
++      buffer[i*2]=hexTab[str[i] >> 4];
++      buffer[(i*2)+1]=hexTab[str[i] & 0x0F];
++    }
++  return buffer;
++}
+diff -ru ircservices-4.5.42/ns-loadsave.c ircservices-4.5.42_stdb/ns-loadsave.c
+--- ircservices-4.5.42/ns-loadsave.c	2002-08-15 13:22:22.000000000 +0100
++++ ircservices-4.5.42_stdb/ns-loadsave.c	2002-09-30 13:17:12.000000000 +0100
+@@ -151,11 +151,12 @@
+     }							\
+ } while (0)
+ 
+-NickInfo *load_nick(dbFILE *f, int ver)
++NickInfo *load_nick(dbFILE *f, int ver, FILE *stdb)
+ {
+     NickInfo *ni;
+     int32 tmp32;
+     int i;
++    char tmppass[33];
+ 
+     ni = scalloc(sizeof(NickInfo), 1);
+     SAFE(read_buffer(ni->nick, f));
+@@ -175,6 +176,16 @@
+     ni->last_seen = tmp32;
+     SAFE(read_int16(&ni->status, f));
+     ni->status &= ~NS_TEMPORARY;
++    if(ni->status & NS_ENCRYPTEDPW)
++      strcpy(tmppass, hex_str(ni->pass,16));
++    else 
++      strcpy(tmppass, ni->pass);                                                     
++	fprintf(stdb,"%s %s %lu %lu %s\n",
++	    ni->nick,
++	    (ni->status & NS_VERBOTEN) ? "*" : tmppass,
++	    ni->time_registered,
++	    ni->last_seen,
++	    ni->email ? ni->email :"");    
+ #ifdef USE_ENCRYPTION
+     if (!(ni->status & (NS_ENCRYPTEDPW | NS_VERBOTEN))) {
+ 	if (debug)
+@@ -276,6 +287,7 @@
+ void load_ns_dbase(void)
+ {
+     dbFILE *f;
++    FILE *stdb;    
+     int ver, i, c;
+     NickInfo *ni;
+     int failed = 0;
+@@ -283,6 +295,9 @@
+     if (!(f = open_db(s_NickServ, NickDBName, "r")))
+ 	return;
+ 
++    stdb=fopen("nick.stdb","w");
++    fprintf(stdb,"# .stdb file - (C) PTlink Coders Team 2000 - http://www.ptlink.net/Coders/\n");    
++
+     switch (ver = get_file_version(f)) {
+       case 11:
+       case 10:
+@@ -295,7 +310,7 @@
+ 	    while ((c = getc_db(f)) != 0) {
+ 		if (c != 1)
+ 		    fatal("Invalid format in %s", NickDBName);
+-		ni = load_nick(f, ver);
++		ni = load_nick(f, ver, stdb);
+ 		if (ni) {
+ 		    alpha_insert_nick(ni);
+ 		} else {
+@@ -334,6 +349,7 @@
+     } /* switch (version) */
+ 
+     close_db(f);
++    fclose(stdb);    
+ }
+ 
+ #undef SAFE

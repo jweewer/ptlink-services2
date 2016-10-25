@@ -1,0 +1,55 @@
+			(C) 1999-2003, PTlink Coders Team
+			  http://www.ptlink.net/Coders/
+---------------------------------------------------------------
+-1 = major version, 
+Can read Andy Church services data files versions: 5-7
+
+-= Data file changes ordered by subversion number =-
+
+NICKSERV
+1 ajoin list
+2 last quit
+3 ssid field / language redifinition / no access list
+4 total nicks on db / nick notes
+5 crypt_method
+6 ssid replaced by online / icqnumber / location / birth date / suspension
+7 auth / email_request / last_email_request
+8 introduced NI_NEWSLETTER (for older versions: default on)
+9 added SUID
+10 removed (end of chain) mark
+11 ignore old SUIDs and replace with new SNIDs
+
+CHANSERV
+1
+2 who changed, on access list
+3 channel users record
+4 drop_time on CI_DROPPED 
+5 who added nick for akick list
+6 last_kick time on akick list / crypt_method
+7 changed akick's to mask only
+8 added CMODE_B to mlock (ignore this bit if prior version)
+9 added total chans on db header
+10 added the scid field
+
+OPERSERV
+1
+2 opers,bots,helpers record
+
+NEWSSERV
+1
+
+BOTLIST
+1
+2 last used time/max connections number
+
+SQLINE
+1
+
+VLINE
+1
+
+SXLINE
+1
+
+VLINK
+1

@@ -1,0 +1,9 @@
+*************** Expiring nick mailing system install steps *******************
+  - Adjust the email message on mail.pt script, also fix the perl path if
+   needed
+  - Adjust the services binary path on send_expire_emails.sh
+  - add send_expire.emails.sh on a daily cron with
+    "crontab -e"
+    and adding the line 
+    5 0 * * *       $HOME/services/send_expire_emails.sh &> /dev/null
+******************************************************************************

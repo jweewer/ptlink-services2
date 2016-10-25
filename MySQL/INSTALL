@@ -1,0 +1,10 @@
+ * $Id: INSTALL,v 1.3 2004/12/30 21:13:32 jpinto Exp $
+
+First make sure you have compiled services with mysql support
+	./configure --with-mysql
+
+Then define your mysql settings on ~/services/etc/services.conf
+To create the db run
+	src/services -i
+Option: 1
+ 

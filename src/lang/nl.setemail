@@ -1,0 +1,26 @@
+Hallo %s,
+
+U ontvangt dit bericht als onderdeel van het geautomatiseerde bijnaam
+registratie systeem van het PTlink IRC netwerk. Als u niet om deze service
+heeft gevraagt, kunt u dit bericht gewoon negeren.
+
+************ E-MAIL WIJZINGING IS NOG NIET COMPLEET **********************
+
+In dit bericht staan de laatste stappen die u moet uitvoeren om de wijzging 
+van uw E-Mail adres te voltooien, als u dit bericht dan ook negeert zal u niet 
+in staat zijn uw E-Mail adres voor de geassosieerde bijnaam te veranderen.
+
+Onthou:
+or gebruik te maken van het PTlink IRC netwerk gaat u akkoord met de
+bij behorende Acceptable Use Policy. Voor meer informatie over deze
+policy: http://www,ptlink.net/aup/
+
+VOLTOOIEN VAN UW E-MAIL WIJZINGING:
+
+De volgende keer dat u online komt na het identificeren van uw bijnaam
+
+/NickServ AUTH %s
+
+E-Mail adres veranderd door: %s
+
+Het PTlink IRC Netwerk - http://www.ptlink.net	/server irc.ptlink.net:6667

@@ -1,0 +1,72 @@
+# Makefile for language module
+
+
+prefix		= @prefix@
+DATAPATH	= @prefix@/data
+RM=@RM@
+
+
+CFLAGS		= @CFLAGS@
+# Developers CFLAGS
+#CFLAGS= -g -O2 -Wunused -Wall -ggdb -pedantic -Wshadow -Wmissing-declarations
+
+
+LANGOBJS = en_us pt tr de it nl pt_br
+LANGSRCS = en_us.l pt.l tr.l de.l it.l nl.l pt_br.l
+
+all: $(LANGOBJS)
+
+install: all
+	mkdir -p $(DATAPATH)/languages
+	chmod 700 $(DATAPATH)/languages
+	cp $(LANGOBJS) $(DATAPATH)/languages
+	chmod 600 $(DATAPATH)/languages/*
+
+clean:
+	${RM} -f $(LANGOBJS) langcomp 
+
+distclean: clean
+	${RM} -f Makefile language.h ../../include/language.h *~
+
+
+en_us:    en_us.l    langcomp index
+	./langcomp $@.l
+es:       es.l       langcomp index
+	./langcomp $@.l
+it:       it.l       langcomp index
+	./langcomp $@.l
+ja_euc:   ja_euc.l   langcomp index
+	./langcomp $@.l
+ja_jis:   ja_jis.l   langcomp index
+	./langcomp $@.l
+ja_sjis:  ja_sjis.l  langcomp index
+	./langcomp $@.l
+pt:       pt.l       langcomp index
+	./langcomp $@.l
+tr:       tr.l       langcomp index
+	./langcomp $@.l
+de:	  de.l	     langcomp index
+	./langcomp $@.l
+nl:	  nl.l	     langcomp index
+	./langcomp $@.l
+pt_br:	  pt_br.l    langcomp index
+	./langcomp $@.l
+
+ja_jis.l: ja_euc.l jconv.pl
+	perl jconv.pl -jis <ja_euc.l >$@
+ja_sjis.l: ja_euc.l jconv.pl
+	perl jconv.pl -sjis <ja_euc.l >$@
+
+langcomp: langcomp.c
+	$(CC) $(CFLAGS) langcomp.c -o $@
+
+language.h: index Makefile
+	@perl -e <index >$@ '\
+		print STDERR "Generating language.h... "; \
+		$$i=0; \
+		while (<>) { \
+			chop; \
+			printf "#define %-32s %d\n", $$_, $$i++; \
+		} \
+		print "\n#define NUM_STRINGS $$i\n"; \
+		print STDERR "$$i strings\n";'

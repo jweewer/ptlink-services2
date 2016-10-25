@@ -1,0 +1,52 @@
+PTlink Services 
+* $Id:
+(C) PTlink Coders Team 1999-2003 -                Coders@PTlink.net
+-------------------------------------------------------------------
+ADDED FEATURES:
+ Expiring in n days mailling generator
+ import-stdb utility
+ OperServ GETFOUNDER
+ SecureNetwork mode option
+ VLINE list management
+ Real time news delivering (NewsServ)
+ Drop Delay
+ Multi Root support
+ ChanServ ACESS list who changed info
+ /ChanServ KICK 
+ Smart Language Selection System
+ /NickServ JOIN  
+ /NickServ SET AUTOX for auto use mode +x
+ Customization on setup.h
+ NickServ/ChanServ STATS (of the day)
+ BOTLIST for wise clone kill protection utilization
+ New datafile version scheme (per database)
+ Date rotated filenames for logs
+ NickServ AJOIN List *
+ /NickServ SET AUTOJOIN ON/OFF 
+ /NickServ GHOST (RELEASE when needed) command auto identify for nick
+ NickServ PROTECTION with nick change to _nick-
+ Memo read acknowledge 
+ ChanServ PROTECT level 
+ OperServ restricted opers control
+ Services log to channel #Services.log
+ Encrypted passwords 
+ Helper umode managing using #HelpChan opers
+ Nick change to _nick- on missing identify
+ Clean kill system for BOT's not identifying on nick change
+ OperServ ZOMBIE/UNZOMBIE for setting umode (+z) zombie
+ Opers will join AdminChan on join
+
+-------------------------------------------------------------------
+LICENSE:
+Please check GPL file COPYING for info on using PTlink services
+source code.
+
+-------------------------------------------------------------------
+CREDITS:
+This services are based on Andy Church services 2.2.4
+
+-------------------------------------------------------------------
+For more information and new versions check 
+http://www.ptlink.net/Coders/ - e-mail:	Lamego@PTlink.net
+Support us visiting /server irc.ptlink.net and reporting
+any bugs/suggestions.
